@@ -1,25 +1,29 @@
-import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { Github, Linkedin, Leetcode } from '../components/BrandIcons';
-import emailjs from '@emailjs/browser';
-import { SectionContainer } from '../components/SectionContainer';
-import { personalInfo } from '../data/portfolioData';
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Github, Linkedin, Leetcode } from "../components/BrandIcons";
+import emailjs from "@emailjs/browser";
+import { SectionContainer } from "../components/SectionContainer";
+import { personalInfo } from "../data/portfolioData";
 
 export const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
-  
-  const [formData, setFormData] = useState({
-    user_name: '',
-    user_email: '',
-    subject: '',
-    message: ''
-  });
-  
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -28,44 +32,52 @@ export const Contact = () => {
     e.preventDefault();
     if (!formRef.current) return;
 
-    setStatus('loading');
+    setStatus("loading");
 
-    // EmailJS credentials configuration
-    // Replace these placeholder strings with your actual EmailJS credentials
-    const SERVICE_ID = 'service_portfolio'; // Replace with your Service ID
-    const TEMPLATE_ID = 'template_portfolio'; // Replace with your Template ID
-    const PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY'; // Replace with your Public Key
+    // EmailJS credentials configuration from environment variables
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    if (PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') {
-      // Mock mode for local testing if credentials are not yet customized by the user
-      setTimeout(() => {
-        setStatus('success');
-        setStatusMessage('Thank you! Your message was submitted successfully (Mock Mode). Configure EmailJS variables in Contact.tsx to receive emails.');
-        setFormData({ user_name: '', user_email: '', subject: '', message: '' });
-      }, 1500);
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error("Missing EmailJS credentials");
+      setStatus("error");
+      setStatusMessage(
+        "Email credentials are not configured. Please check your environment variables.",
+      );
       return;
     }
 
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-      .then(
-        () => {
-          setStatus('success');
-          setStatusMessage('Your message has been sent successfully! I will get back to you shortly.');
-          setFormData({ user_name: '', user_email: '', subject: '', message: '' });
-        },
-        (error) => {
-          console.error('EmailJS Error:', error);
-          setStatus('error');
-          setStatusMessage('Oops! Something went wrong while sending. Please try emailing me directly.');
-        }
-      );
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY).then(
+      () => {
+        setStatus("success");
+        setStatusMessage(
+          "Your message has been sent successfully! I will get back to you shortly.",
+        );
+        setFormData({
+          user_name: "",
+          user_email: "",
+          subject: "",
+          message: "",
+        });
+      },
+      (error) => {
+        console.error("EmailJS Error:", error);
+        setStatus("error");
+        setStatusMessage(
+          "Oops! Something went wrong while sending. Please try emailing me directly.",
+        );
+      },
+    );
   };
 
   return (
-    <SectionContainer id="contact" title="Get In Touch" subtitle="Let's Connect">
+    <SectionContainer
+      id="contact"
+      title="Get In Touch"
+      subtitle="Let's Connect"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-5xl mx-auto items-start">
-        
         {/* Left Column: Contact details */}
         <div className="lg:col-span-5 space-y-6">
           <div>
@@ -73,7 +85,9 @@ export const Contact = () => {
               Let's build something awesome together!
             </h3>
             <p className="text-sm sm:text-base text-portfolioTextSecondary leading-relaxed font-light">
-              I am open to Software Engineer Trainee, Full-Stack Developer, and junior MERN Stack positions. Feel free to reach out if you have opportunities, want to collaborate, or just connect.
+              I am open to Software Engineer Trainee, Full-Stack Developer, and
+              junior MERN Stack positions. Feel free to reach out if you have
+              opportunities, want to collaborate, or just connect.
             </p>
           </div>
 
@@ -83,8 +97,13 @@ export const Contact = () => {
                 <Mail size={18} />
               </div>
               <div>
-                <p className="text-xs text-portfolioTextSecondary font-medium uppercase">Direct Email</p>
-                <a href={`mailto:${personalInfo.email}`} className="text-sm font-semibold text-portfolioText hover:text-portfolioPrimary transition-colors">
+                <p className="text-xs text-portfolioTextSecondary font-medium uppercase">
+                  Direct Email
+                </p>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="text-sm font-semibold text-portfolioText hover:text-portfolioPrimary transition-colors"
+                >
                   {personalInfo.email}
                 </a>
               </div>
@@ -95,7 +114,9 @@ export const Contact = () => {
                 <MapPin size={18} />
               </div>
               <div>
-                <p className="text-xs text-portfolioTextSecondary font-medium uppercase">Location</p>
+                <p className="text-xs text-portfolioTextSecondary font-medium uppercase">
+                  Location
+                </p>
                 <p className="text-sm font-semibold text-portfolioText">
                   {personalInfo.location}
                 </p>
@@ -149,7 +170,10 @@ export const Contact = () => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label htmlFor="user_name" className="text-xs font-semibold text-portfolioTextSecondary uppercase">
+                <label
+                  htmlFor="user_name"
+                  className="text-xs font-semibold text-portfolioTextSecondary uppercase"
+                >
                   Your Name
                 </label>
                 <input
@@ -165,7 +189,10 @@ export const Contact = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="user_email" className="text-xs font-semibold text-portfolioTextSecondary uppercase">
+                <label
+                  htmlFor="user_email"
+                  className="text-xs font-semibold text-portfolioTextSecondary uppercase"
+                >
                   Your Email
                 </label>
                 <input
@@ -182,7 +209,10 @@ export const Contact = () => {
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="subject" className="text-xs font-semibold text-portfolioTextSecondary uppercase">
+              <label
+                htmlFor="subject"
+                className="text-xs font-semibold text-portfolioTextSecondary uppercase"
+              >
                 Subject
               </label>
               <input
@@ -198,7 +228,10 @@ export const Contact = () => {
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="message" className="text-xs font-semibold text-portfolioTextSecondary uppercase">
+              <label
+                htmlFor="message"
+                className="text-xs font-semibold text-portfolioTextSecondary uppercase"
+              >
                 Message
               </label>
               <textarea
@@ -216,10 +249,10 @@ export const Contact = () => {
             {/* Submission Button */}
             <button
               type="submit"
-              disabled={status === 'loading'}
+              disabled={status === "loading"}
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-portfolioPrimary to-portfolioSecondary text-portfolioBg font-bold shadow-md hover:scale-[1.01] hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100 transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
             >
-              {status === 'loading' ? (
+              {status === "loading" ? (
                 <>
                   <div className="w-5 h-5 border-2 border-portfolioBg border-t-transparent rounded-full animate-spin" />
                   Sending Message...
@@ -233,7 +266,7 @@ export const Contact = () => {
             </button>
 
             {/* Success / Error notification */}
-            {status === 'success' && (
+            {status === "success" && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -244,7 +277,7 @@ export const Contact = () => {
               </motion.div>
             )}
 
-            {status === 'error' && (
+            {status === "error" && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -256,7 +289,6 @@ export const Contact = () => {
             )}
           </form>
         </div>
-
       </div>
     </SectionContainer>
   );
