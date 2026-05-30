@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, FileText, MapPin } from 'lucide-react';
 import { Github, Linkedin, Leetcode } from '../components/BrandIcons';
 import { personalInfo } from '../data/portfolioData';
+import profileImg from '../assets/profile.png';
 
 const roles = [
   "Software Engineer Trainee",
@@ -44,15 +45,38 @@ export const Hero = () => {
       <div className="absolute bottom-[10%] right-[-10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full bg-portfolioSecondary/10 blur-[80px] md:blur-[120px] -z-10 animate-pulse" style={{ animationDuration: '10s' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Trainee Badge */}
+        {/* Profile Image with morphing blob cutout style */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-portfolioTextSecondary text-xs md:text-sm font-medium mb-6 backdrop-blur-md"
+          transition={{ duration: 0.7, type: 'spring', bounce: 0.2 }}
+          className="mb-8 relative group"
         >
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span>Software Engineer Trainee @ Aspire SoftServ</span>
+          {/* Animated Blob Background Glow */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-portfolioPrimary via-portfolioSecondary to-portfolioPrimary bg-200% animate-gradient opacity-50 blur-lg rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] group-hover:opacity-85 transition-all duration-500" />
+          
+          <motion.div
+            animate={{
+              borderRadius: [
+                "60% 40% 30% 70% / 60% 30% 70% 40%",
+                "30% 60% 70% 40% / 50% 60% 30% 60%",
+                "50% 40% 85% 15% / 60% 30% 70% 40%",
+                "60% 40% 30% 70% / 60% 30% 70% 40%"
+              ]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-40 h-40 md:w-48 md:h-48 overflow-hidden border-2 border-white/10 group-hover:border-portfolioPrimary/30 transition-colors shadow-2xl relative bg-portfolioBg"
+          >
+            <img
+              src={profileImg}
+              alt={personalInfo.name}
+              className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 scale-[1.02] group-hover:scale-105 transition-all duration-500"
+            />
+          </motion.div>
         </motion.div>
 
         {/* Name */}

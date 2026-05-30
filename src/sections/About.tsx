@@ -15,7 +15,7 @@ export const About = () => {
       icon: <BookOpen className="text-portfolioSecondary" size={24} />,
       title: "Education",
       value: "B.Tech (Information Technology)",
-      sub: "Ganpat University (Final Year)"
+      sub: "Ganpat University"
     },
     {
       icon: <Cpu className="text-portfolioPrimary" size={24} />,

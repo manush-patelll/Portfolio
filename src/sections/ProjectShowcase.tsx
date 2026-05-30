@@ -82,13 +82,25 @@ export const ProjectShowcase = () => {
                   <Github size={16} />
                   Source Code
                 </a>
-                <button
-                  onClick={() => alert("Live booking demo is currently hosted in testing. Contact to request access!")}
-                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-portfolioPrimary to-portfolioSecondary text-portfolioBg text-sm font-semibold shadow-md hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <ExternalLink size={16} />
-                  Live Preview
-                </button>
+                {project.liveLink ? (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-portfolioPrimary to-portfolioSecondary text-portfolioBg text-sm font-semibold shadow-md hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink size={16} />
+                    Live Preview
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => alert("Live booking demo is currently hosted in testing. Contact to request access!")}
+                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-portfolioPrimary to-portfolioSecondary text-portfolioBg text-sm font-semibold shadow-md hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <ExternalLink size={16} />
+                    Live Preview
+                  </button>
+                )}
               </div>
             </div>
 

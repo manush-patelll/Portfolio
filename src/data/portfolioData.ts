@@ -172,7 +172,9 @@ export const projects: Project[] = [
       "Production Deployment",
       "Full-Stack Architecture",
     ],
-    githubLink: "https://github.com/manush-patelll", // default fallback Link
+    githubLink:
+      "https://github.com/manush-patelll/CineSphere-movie-ticket-booking",
+    liveLink: "https://cine-sphere-movie-ticket-booking.vercel.app/",
   },
 ];
 
@@ -181,7 +183,7 @@ export const education: Education[] = [
     degree: "Bachelor of Technology (Information Technology)",
     institution: "Ganpat University",
     duration: "September 2022 – June 2026",
-    grade: "7.69/10 CGPA",
+    grade: "8.11/10 CGPA",
     coursework: [
       "Data Structures and Algorithms",
       "Object-Oriented Programming",
@@ -195,7 +197,7 @@ export const education: Education[] = [
     institution:
       "P. R. Patel Sarvodaya Vidhyalaya and B. M. Patel Higher Secondary School",
     duration: "June 2021 – May 2022",
-    grade: "75%",
+    grade: "`75%",
   },
   {
     degree: "Secondary School Certificate (SSC)",
