@@ -49,7 +49,7 @@ export const personalInfo = {
     "Software Engineer Trainee @ Aspire SoftServ | Full-Stack Developer | MERN Stack | AWS | Docker | CI/CD",
   location: "Ahmedabad, Gujarat, India",
   email: "manushpo7@gmail.com",
-  linkedin: "https://linkedin.com/in/manush-pat-6b6033256", // adjusted from short user link
+  linkedin: "https://www.linkedin.com/in/manush-patel-6b6033256/", // adjusted from short user link
   github: "https://github.com/manush-patelll",
   leetcode: "https://leetcode.com/manush_patel",
   summary:
@@ -87,8 +87,9 @@ export const skills: SkillCategory[] = [
     category: "Frontend Development",
     skills: [
       "React.js",
-      "JavaScript",
-      "TypeScript",
+      "Redux & Redux Toolkit",
+      "Tailwind CSS",
+      "Material UI",
       "HTML5",
       "CSS3",
       "Responsive Design",
@@ -99,18 +100,35 @@ export const skills: SkillCategory[] = [
     skills: [
       "Node.js",
       "Express.js",
+      "WebSockets (Socket.io)",
+      "Firebase",
       "REST APIs",
       "JWT Authentication",
       "Role-Based Authorization",
     ],
   },
   {
-    category: "Databases",
-    skills: ["MongoDB", "PostgreSQL", "MySQL"],
+    category: "Databases & Caching",
+    skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
   },
   {
     category: "Cloud & DevOps",
-    skills: ["AWS", "Docker", "GitHub Actions", "CI/CD", "Linux", "Nginx"],
+    skills: [
+      "AWS",
+      "Docker & Docker Compose",
+      "CI/CD (GitHub Actions)",
+      "Load Balancing & Clustering",
+      "Linux",
+      "Nginx",
+    ],
+  },
+  {
+    category: "Testing & Best Practices",
+    skills: [
+      "Testing (Jest, React Testing Library)",
+      "Performance Optimization",
+      "Security Best Practices",
+    ],
   },
   {
     category: "Programming Languages",
@@ -128,7 +146,15 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Tools",
-    skills: ["Git", "GitHub", "GitLab", "VS Code", "Postman"],
+    skills: [
+      "Git & GitHub",
+      "GitLab",
+      "VS Code",
+      "Codex",
+      "GitHub Copilot",
+      "Claude Code",
+      "Postman",
+    ],
   },
 ];
 

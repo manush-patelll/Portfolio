@@ -1,16 +1,19 @@
-import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, Award, BookOpen } from 'lucide-react';
-import { SectionContainer } from '../components/SectionContainer';
-import { education } from '../data/portfolioData';
+import { motion } from "framer-motion";
+import { GraduationCap, Calendar, Award, BookOpen } from "lucide-react";
+import { SectionContainer } from "../components/SectionContainer";
+import { education } from "../data/portfolioData";
 
 export const Education = () => {
   const btech = education[0];
   const schools = education.slice(1);
 
   return (
-    <SectionContainer id="education" title="Education" subtitle="Academic Milestones">
+    <SectionContainer
+      id="education"
+      title="Education"
+      subtitle="Academic Milestones"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto">
-        
         {/* Featured Education Card: B.Tech */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -105,7 +108,6 @@ export const Education = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </SectionContainer>
   );
