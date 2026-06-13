@@ -1,7 +1,16 @@
-import { motion } from 'framer-motion';
-import { Layout, Server, Database, Cloud, Code, BookOpen, Wrench } from 'lucide-react';
-import { SectionContainer } from '../components/SectionContainer';
-import { skills } from '../data/portfolioData';
+import { motion } from "framer-motion";
+import {
+  Layout,
+  Server,
+  Database,
+  Cloud,
+  Code,
+  BookOpen,
+  Wrench,
+  ShieldCheck,
+} from "lucide-react";
+import { SectionContainer } from "../components/SectionContainer";
+import { skills } from "../data/portfolioData";
 
 // Map categories to specific icons
 const getCategoryIcon = (category: string) => {
@@ -11,9 +20,12 @@ const getCategoryIcon = (category: string) => {
     case "Backend Development":
       return <Server className="text-portfolioSecondary" size={20} />;
     case "Databases":
+    case "Databases & Caching":
       return <Database className="text-portfolioPrimary" size={20} />;
     case "Cloud & DevOps":
       return <Cloud className="text-portfolioSecondary" size={20} />;
+    case "Testing & Best Practices":
+      return <ShieldCheck className="text-portfolioPrimary" size={20} />;
     case "Programming Languages":
       return <Code className="text-portfolioPrimary" size={20} />;
     case "Computer Science Fundamentals":
@@ -25,7 +37,11 @@ const getCategoryIcon = (category: string) => {
 
 export const Skills = () => {
   return (
-    <SectionContainer id="skills" title="Technical Skills" subtitle="My Expertise">
+    <SectionContainer
+      id="skills"
+      title="Technical Skills"
+      subtitle="My Expertise"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skills.map((skillCat, idx) => (
           <motion.div
