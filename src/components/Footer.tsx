@@ -1,12 +1,12 @@
-import { ArrowUp, Mail } from 'lucide-react';
-import { Github, Linkedin, Leetcode } from './BrandIcons';
-import { personalInfo } from '../data/portfolioData';
+import { ArrowUp, Mail } from "lucide-react";
+import { Github, Linkedin, Leetcode } from "./BrandIcons";
+import { personalInfo } from "../data/portfolioData";
 
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -70,7 +70,10 @@ export const Footer = () => {
             >
               Back to top
               <span className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-portfolioPrimary/15 group-hover:border-portfolioPrimary transition-all group-hover:-translate-y-1">
-                <ArrowUp size={14} className="text-portfolioTextSecondary group-hover:text-portfolioPrimary" />
+                <ArrowUp
+                  size={14}
+                  className="text-portfolioTextSecondary group-hover:text-portfolioPrimary"
+                />
               </span>
             </button>
           </div>

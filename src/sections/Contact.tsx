@@ -85,8 +85,8 @@ export const Contact = () => {
               Let's build something awesome together!
             </h3>
             <p className="text-sm sm:text-base text-portfolioTextSecondary leading-relaxed font-light">
-              I am open to Software Engineer Trainee, Full-Stack Developer, and
-              junior MERN Stack positions. Feel free to reach out if you have
+              I am open to Software Engineer, Full-Stack Developer, and junior
+              MERN Stack positions. Feel free to reach out if you have
               opportunities, want to collaborate, or just connect.
             </p>
           </div>
