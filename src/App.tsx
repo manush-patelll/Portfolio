@@ -1,15 +1,15 @@
-import { InteractiveBackground } from './components/InteractiveBackground';
-import { Navbar } from './components/Navbar';
-import { Hero } from './sections/Hero';
-import { About } from './sections/About';
-import { Experience } from './sections/Experience';
-import { Skills } from './sections/Skills';
-import { ProjectShowcase } from './sections/ProjectShowcase';
-import { Education } from './sections/Education';
-import { Certifications } from './sections/Certifications';
-import { LearningJourney } from './sections/LearningJourney';
-import { Contact } from './sections/Contact';
-import { Footer } from './components/Footer';
+import { InteractiveBackground } from "./components/InteractiveBackground";
+import { Navbar } from "./components/Navbar";
+import { Hero } from "./sections/Hero";
+import { About } from "./sections/About";
+import { Experience } from "./sections/Experience";
+import { Skills } from "./sections/Skills";
+import { ProjectShowcase } from "./sections/ProjectShowcase";
+import { Education } from "./sections/Education";
+import { Certifications } from "./sections/Certifications";
+import { LearningJourney } from "./sections/LearningJourney";
+import { Contact } from "./sections/Contact";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
