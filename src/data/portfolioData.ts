@@ -12,6 +12,10 @@ export interface Project {
   learnings: string[];
   liveLink?: string;
   githubLink?: string;
+  /** "professional" = work project, "personal" = side/portfolio project */
+  category?: "professional" | "personal";
+  /** Headline bullet-point callouts shown prominently on the card */
+  highlights?: string[];
 }
 
 export interface Experience {
@@ -160,10 +164,173 @@ export const skills: SkillCategory[] = [
 
 export const projects: Project[] = [
   {
+    title: "Enterprise Library Management System",
+    duration: "February 2026 – Present",
+    category: "professional",
+    overview:
+      "An enterprise-grade library management system built at Aspire SoftServ with 40+ feature modules covering books, authors, magazines, publication houses, and HR operations. Developed with a production-ready tech stack including Next.js 15, TypeScript, MySQL, Sequelize, and AG Grid.",
+    highlights: [
+      "A library management system with 40+ feature modules (books, authors, magazines, publication houses, HR operations)",
+      "Delivered multi-step JWT login flow and 40+ REST API endpoints",
+      "Built custom AG Grid with right-click context menus, record locking/unlocking & keyboard shortcuts",
+      "Optimized work-reports filter API to run 3× faster through query restructuring",
+      "Implemented HR Operations modules (Leave, Work Reports, Employee records) with RBAC",
+    ],
+    features: [
+      "Multi-step JWT Authentication",
+      "40+ REST API Endpoints",
+      "Books & Authors Module",
+      "Magazines & Publications",
+      "HR Operations (Leave Management)",
+      "Work Reports",
+      "Employee Records",
+      "Role-Based Access Control",
+      "Record Locking / Unlocking",
+      "Custom AG Grid + Context Menus",
+      "Keyboard Shortcuts",
+      "Recursive Nested Forms",
+    ],
+    techStack: [
+      "Next.js 15",
+      "TypeScript",
+      "React 19",
+      "Node.js",
+      "Express",
+      "MySQL",
+      "Sequelize",
+      "Redux Toolkit",
+      "JWT",
+      "AG Grid",
+      "Docker",
+      "GitLab CI/CD",
+    ],
+    deployment: {
+      frontend: "Internal / GitLab CI",
+      backend: "Docker + Node.js",
+      database: "MySQL",
+    },
+    learnings: [
+      "Enterprise Architecture",
+      "Performance Optimization",
+      "Complex Form Design",
+      "Role-Based Authorization",
+      "API Design at Scale",
+      "AG Grid Customization",
+      "CI/CD Pipelines",
+    ],
+  },
+  {
+    title: "ShopSphere – Full-Stack E-Commerce Platform",
+    duration: "2026",
+    category: "professional",
+    overview:
+      "A production-grade full-stack e-commerce platform featuring cursor-based pagination, real-time order notifications, background job queues, JWT dual-token auth with RBAC, Redis-backed rate limiting, and a full CI/CD pipeline.",
+    highlights: [
+      "Designed cursor-based pagination with dynamic SQL filters + useInfiniteQuery on the client",
+      "JWT dual-token auth (httpOnly cookies) with RBAC and Redis-backed tiered rate limiting",
+      "Real-time order notifications via Socket.IO with JWT-authenticated handshakes & per-user rooms",
+      "BullMQ background job queues for order confirmation and OTP emails",
+      "Full CI/CD: GitHub Actions (lint, type-check, tests) + Dockerized multi-service stack",
+    ],
+    features: [
+      "Cursor-Based Pagination",
+      "JWT Dual-Token Auth",
+      "RBAC Authorization",
+      "Redis Rate Limiting",
+      "Real-Time Notifications (Socket.IO)",
+      "BullMQ Job Queues",
+      "OTP Email System",
+      "GitHub Actions CI/CD",
+      "Dockerized Multi-Service Stack",
+      "Nginx Reverse Proxy",
+      "Health Checks",
+      "pgAdmin",
+    ],
+    techStack: [
+      "React 18",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Redis",
+      "Socket.IO",
+      "BullMQ",
+      "Docker",
+      "Nginx",
+      "GitHub Actions",
+    ],
+    deployment: {
+      frontend: "Docker + Nginx",
+      backend: "Docker + Node.js",
+      database: "PostgreSQL + Redis",
+    },
+    learnings: [
+      "Cursor-Based Pagination",
+      "Real-Time Architecture",
+      "Background Job Queues",
+      "Redis Caching & Rate Limiting",
+      "CI/CD Automation",
+      "Dockerized Microservices",
+    ],
+  },
+  {
+    title: "ConnectUs – Online Collaborative Platform",
+    duration: "2024",
+    category: "personal",
+    overview:
+      "A full-stack real-time collaboration tool built with Next.js and Node.js, featuring Socket.IO-powered chat, audio/video calls, TLDraw live collaborative whiteboarding, and secure Clerk authentication with third-party logins.",
+    highlights: [
+      "Built real-time chat and audio/video calls with Socket.IO",
+      "Integrated TLDraw for live collaborative whiteboarding",
+      "Implemented Clerk authentication with Google & GitHub OAuth and RBAC",
+    ],
+    features: [
+      "Real-Time Chat (Socket.IO)",
+      "Audio / Video Calls",
+      "Live Collaborative Whiteboard (TLDraw)",
+      "Clerk Authentication",
+      "Google & GitHub OAuth",
+      "Role-Based Access Control",
+      "PostgreSQL Data Persistence",
+      "Responsive UI",
+    ],
+    techStack: [
+      "Next.js",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Socket.IO",
+      "TLDraw",
+      "Clerk",
+      "TypeScript",
+    ],
+    deployment: {
+      frontend: "Vercel",
+      backend: "Node.js / Express",
+      database: "PostgreSQL",
+    },
+    learnings: [
+      "Real-Time Communication",
+      "WebRTC & Audio/Video",
+      "Collaborative Canvas (TLDraw)",
+      "OAuth & Clerk Integration",
+      "Full-Stack Next.js",
+      "PostgreSQL Schema Design",
+    ],
+    githubLink: "https://github.com/manush-patelll",
+  },
+  {
     title: "CineSphere – Movie Ticket Booking Platform",
     duration: "January 2025 – April 2025",
+    category: "personal",
     overview:
       "CineSphere is a full-stack movie ticket booking platform developed using the MERN stack. The application allows users to browse movies, select seats, book tickets, make secure payments, and manage bookings through an intuitive interface.",
+    highlights: [
+      "Full MERN stack with JWT auth and role-based authorization",
+      "Interactive seat-selection UI and Razorpay payment integration",
+      "Admin Dashboard for movie and booking management",
+      "Deployed on Vercel + Render + MongoDB Atlas",
+    ],
     features: [
       "JWT-based Authentication",
       "Role-Based Authorization (Admin/User)",
